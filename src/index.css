@@ -1,0 +1,83 @@
+/* ================================================================
+1. CSS Reset Code
+
+http://meyerweb.com/eric/tools/css/reset/
+===================================================================*/
+html,
+body,
+#root {
+    height: 100%;
+}
+
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a, address, cite, dfn, img, ol, ul, li, form, label,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, footer, header, nav, section, summary, audio, video {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 62.5%;
+    font: inherit;
+    outline: none;
+    vertical-align: baseline;
+}
+
+input,
+select,
+textarea {
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ol, ul { list-style: none; }
+
+.container-fluid {
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+    outline: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.form-control,
+.btn {
+    border-radius: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/* 1.2. Clear Fix
+========================================================================== */
+
+.cf:before,
+.cf:after {
+    display: table;
+    content: " ";
+}
+
+.cf:after { clear: both; }
+
+.cf { *zoom: 1; }
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #878787;
+  font-family: sans-serif;
+}
