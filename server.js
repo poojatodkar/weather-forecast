@@ -69,9 +69,10 @@ app.get('/getDetailsForMultipleCities', (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.get('*', (req, res) => {
+    const way = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(way);
+  });
 
 app.use(cors());
 
