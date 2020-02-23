@@ -67,7 +67,7 @@ app.get('/getDetailsForMultipleCities', (req, res) => {
 	}).catch(err => console.log('error in get details for multiple cities api', err));
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
