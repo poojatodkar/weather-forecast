@@ -21,11 +21,6 @@ const request = new OAuth.OAuth(
 const port = process.env.PORT || 4000;
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 app.get('/getDetailsById', (req, res) => {
 	request.get(
@@ -72,7 +67,13 @@ app.get('/getDetailsForMultipleCities', (req, res) => {
 			data
 		});
 	}).catch(err => console.log('error in get details for multiple cities api', err));
-})
+});
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
