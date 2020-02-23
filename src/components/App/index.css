@@ -100,10 +100,11 @@ button {
 
   .weather-details .weather-forecast {
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .weather-details .weather-forecast .forecast {
-    width: 75px;
+    width: 70px;
     margin-bottom: 20px;
   }
 }
