@@ -20,7 +20,7 @@ export const fetchWeatherDataForMultipleCities = data => {
 export const fetchWeatherDetails = data => {
     return dispatch => {
         return axios.get(
-            'http://localhost:4000/getDetailsById', {
+            '/getDetailsById', {
                 params: {
                     woeid: data.value
                 }
@@ -35,7 +35,7 @@ export const fetchWeatherDetails = data => {
 export const fetchWeatherDetailsForMultipleCities = data => {
     return dispatch => {
         return axios.get(
-            'http://localhost:4000/getDetailsForMultipleCities', {
+            '/getDetailsForMultipleCities', {
                 params: {
                     woeid: data
                 }
