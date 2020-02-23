@@ -27,7 +27,7 @@ class WeatherDetail extends Component {
                     {
                         forecasts.map(value => {
                             return (
-                                <div>
+                                <div className="forecast">
                                     <p>{value.day}</p>
                                     <p><span>{value.high}<sup>&#176;</sup></span><span>{value.low}<sup>&#176;</sup></span></p>
                                 </div>
