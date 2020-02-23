@@ -20,8 +20,6 @@ const request = new OAuth.OAuth(
 
 const port = process.env.PORT || 4000;
 
-app.use(cors());
-
 app.get('/getDetailsById', (req, res) => {
 	request.get(
 		`https://weather-ydn-yql.media.yahoo.com/forecastrss?woeid=${req.query.woeid}&format=json`,
@@ -69,11 +67,13 @@ app.get('/getDetailsForMultipleCities', (req, res) => {
 	}).catch(err => console.log('error in get details for multiple cities api', err));
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.use(cors());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
