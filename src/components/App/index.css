@@ -94,6 +94,10 @@ button {
 
 /* media queries */
 @media (max-width: 585px) {
+  .loader {
+    left: 0;
+  }
+  
   .weather-details .weather-detail-body {
     display: block;
   }
