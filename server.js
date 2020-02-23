@@ -21,7 +21,6 @@ const request = new OAuth.OAuth(
 const port = process.env.PORT || 4000;
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', function(req, res) {
