@@ -13,10 +13,13 @@ button {
   margin: 20px 0;
   padding: 10px 20px;
   border-radius: 8px;
-  background-color: #fff;
-  color: #878787;
+  background-color: #096dd9;
+  color: #fff;
   font-size: 16px;
   cursor: pointer;
+  border: 0;
+  box-shadow: none;
+  outline: 0;
 }
 
 .loader {
@@ -33,6 +36,12 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.select-view h1 {
+  margin-bottom: 30px;
+  color: #000;
+  font-size: 35px;
 }
 
 .select-view p {
@@ -97,7 +106,7 @@ button {
   .loader {
     left: 0;
   }
-  
+
   .weather-details .weather-detail-body {
     display: block;
   }

@@ -4,7 +4,7 @@ class WeatherDetail extends Component {
     render() {
         const { details, onClickBack } = this.props;
         const { location, current_observation, forecasts } = details;
-        console.log('location', location, current_observation, forecasts);
+        
         return (
             <div className="weather-details card">
                 <button onClick={onClickBack}>Back</button>
@@ -25,9 +25,9 @@ class WeatherDetail extends Component {
                 </div>
                 <div className="weather-forecast">
                     {
-                        forecasts.map(value => {
+                        forecasts.map((value, index) => {
                             return (
-                                <div className="forecast">
+                                <div className="forecast" key={index}>
                                     <p>{value.day}</p>
                                     <p><span>{value.high}<sup>&#176;</sup></span><span>{value.low}<sup>&#176;</sup></span></p>
                                 </div>

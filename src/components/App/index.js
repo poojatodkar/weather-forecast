@@ -6,16 +6,24 @@ import WeatherDetail from '../WeatherDetail';
 import WeatherDetailList from '../WeatherDetailList';
 import CitiesDropdown from '../CitiesDropdown';
 import { UScities } from '../../config';
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css'
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			viewType: '',
 			isMultiSelect: false,
 			selectedValue: null,
 			showDropdown: false,
 			showWeatherDetail: false
+		};
+
+		toastr.options = {
+			positionClass : 'toast-bottom-right',
+			hideDuration: 300,
 		};
 	}
 
@@ -25,21 +33,31 @@ class App extends Component {
 
 	handleChangeWeatherView = e => {
 		this.setState({
-			isMultiSelect: e.target.value === 'multiple' ? true : false
+			isMultiSelect: e.target.value === 'multiple' ? true : false,
+			viewType: e.target.value
 		});
 	};
 
 	onClickWeatherViewNext = () => {
-		this.setState({
-			showDropdown: true
-		});
+		if (this.state.viewType === '') {
+			toastr.options = {
+				positionClass : 'toast-bottom-right',
+				hideDuration: 300,
+			};
+			toastr.error('Please select an option to view weather');
+		} else {
+			this.setState({
+				showDropdown: true
+			});
+		}
 	}
 
 	onClickBackFromDropdownComponent = () => {
 		this.setState({
 			isMultiSelect: false,
 			selectedValue: null,
-			showDropdown: false
+			showDropdown: false,
+			viewType: ''
 		})
 	}
 
@@ -47,20 +65,25 @@ class App extends Component {
 		this.setState({
 			showDropdown: true,
 			showWeatherDetail: false,
-			selectedValue: null
+			selectedValue: null,
+			viewType: ''
 		})
 	}
 
 	onClickDropdownNext = () => {
-		this.setState({
-			showWeatherDetail: true,
-			showDropdown: false
-		});
-		if (Array.isArray(this.state.selectedValue)) {
-			const value = this.state.selectedValue.map(item => item.value);
-			this.props.fetchWeatherDetailsForMultipleCities(value);
+		if (this.state.selectedValue) {
+			this.setState({
+				showWeatherDetail: true,
+				showDropdown: false
+			});
+			if (Array.isArray(this.state.selectedValue)) {
+				const value = this.state.selectedValue.map(item => item.value);
+				this.props.fetchWeatherDetailsForMultipleCities(value);
+			} else {
+				this.props.fetchWeatherDetails(this.state.selectedValue);
+			}
 		} else {
-			this.props.fetchWeatherDetails(this.state.selectedValue);
+			toastr.error('Please select a city');
 		}
 	};
 
@@ -72,6 +95,7 @@ class App extends Component {
 					? (
 						<div className="card">
 							<div className="select-view">
+								<h1>Welcome to Weather App!!!</h1>
 								<p>Select if you wish to view weather forecast of single/multiple cities</p>
 								<div>
 									<div>
